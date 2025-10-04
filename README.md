@@ -129,15 +129,6 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=johnlockejrr&show_icons=true&theme=tokyonight" alt="Tim's GitHub stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=johnlockejrr&theme=tokyonight" alt="GitHub Streak" />
-</div>
-
----
-
 ## 🌟 **Featured Projects & Repositories**
 
 ### **[Unikud - Hebrew NLP System](https://github.com/johnlockejrr/unikud)**
@@ -173,6 +164,8 @@ Modern web interface for searching Samaritan Torah text with React, FastAPI, and
 ![John's GitHub stats](https://github-readme-stats.vercel.app/api?username=johnlockejrr&show_icons=true&theme=radical)
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=johnlockejrr&layout=compact&theme=radical)
+
+![Streaks](https://github-readme-streak-stats.herokuapp.com?user=johnlockejrr&theme=tokyonight&theme=radical)
 
 ---
 
