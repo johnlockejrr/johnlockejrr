@@ -1,12 +1,24 @@
-# 👋 Hi there, I'm John Locke Jr.
+# 👋 Hi there, I'm John Locke Jr. (Teodor Bors)
 
 ## 🎯 **Multilingual AI Researcher & Semitic Language Specialist**
 
-I'm passionate about **Natural Language Processing**, **Semitic linguistics**, and **AI optimization**. My work spans Hebrew, Aramaic, Syriac, and Samaritan text processing, with expertise in eGPU optimization, transformer architectures, and historical text digitization.
+I'm passionate about **Natural Language Processing**, **Semitic linguistics**, and **AI optimization**. My work spans Hebrew, Aramaic, Syriac, and Samaritan text processing, with expertise in eGPU optimization, transformer architectures, and historical text digitization — including **set-prediction baseline detection** and PAGE/ALTO export for HTR pipelines.
+
+**ORCID:** [0009-0005-0365-6608](https://orcid.org/0009-0005-0365-6608) · **Zenodo preprint:** [doi:10.5281/zenodo.22059333](https://doi.org/10.5281/zenodo.22059333)
 
 ---
 
 ## 🚀 **Current Projects & Research**
+
+### 📐 **regnetx-det — Polyline Baseline Detection for Historical Documents**
+**Set-prediction detector** that outputs B-spline polyline baselines directly: RegNetX-8GF, RT-DETR-style HybridEncoder, and PolylineTransformer with native PAGE/ALTO export.
+
+- **Paper:** [Zenodo preprint](https://doi.org/10.5281/zenodo.22059333) — architecture & transfer study (not a cBAD hidden-test leaderboard claim)
+- **Code:** [`johnlockejrr/regnetx-det`](https://github.com/johnlockejrr/regnetx-det)
+- **Stage-0 weights:** [`regnetx-8gf-polyline-baseline-stage0`](https://huggingface.co/johnlockejrr/regnetx-8gf-polyline-baseline-stage0) (multiscript pretrain; Gradio [demo](https://huggingface.co/spaces/johnlockejrr/regnetx-8gf-polyline-baseline-stage0))
+- **Hebrew/Samaritan FT:** [`regnetx-8gf-polyline-hebrew-samaritan`](https://huggingface.co/johnlockejrr/regnetx-8gf-polyline-hebrew-samaritan) (`cbad_f1_max` ≈ **0.969** on internal val)
+- **Highlights:** HybridEncoder vs FPN neck ablation; native Stage-0 vs D-FINE warm-start; cBAD 2019 **eval** Stage-0 Chamfer F1 **0.907**
+- **Siblings:** [`dfine-det`](https://github.com/johnlockejrr/dfine-det), [`convnextv2-det`](https://github.com/johnlockejrr/convnextv2-det), plus hardened BLLA-style polygon export across det/seg packages in the oxygraphos-ocr workspace
 
 ### 🔤 **Unikud - Advanced Hebrew NLP System**
 **Complete Hebrew text processing pipeline** with advanced nikud restoration capabilities using transformer-based models.
@@ -57,6 +69,22 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 - **Backend**: FastAPI with Elasticsearch integration
 - **Applications**: Biblical research, text study, educational platforms
 
+### 🔒 **Oxygraphos stack & Marian toolkit** *(in active development — private / not public yet)*
+
+These are current local workstreams feeding the open `regnetx-det` releases above. Repos are private for now; descriptions reflect working code.
+
+#### **oxygraphos-ocr** — unified historical OCR / layout workspace
+Single `uv` workspace that installs many sibling engines under one CLI style (detectors, segmenters, line recognizers). Includes polyline baseline detectors (`regnetx-det`, `dfine-det`, `convnextv2-det`), segmentation packages (`blla-seg`, `dfine-seg`, `docufcn-seg`, `surya-seg`, `rfdetr-seg`, …), and HTR/OCR recognizers (RepViT, Nemo, PyLaia, Loghi, HTR-VT, PP-OCRv6, …), plus shared hardened PAGE/ALTO polygon export.
+
+#### **oxygraphos-atr** — Automatic Text Recognition workspace
+Local-first **ATR** platform (eScriptorium-inspired): projects, async jobs (Redis/RQ), multi-user auth with GPU isolation, and in-workspace recognition using engines from `oxygraphos-ocr` (RepViT, Nemo, PyLaia, Loghi + optional KenLM). Segmentation / baseline models (BLLA, D-FINE, RegNetX, Doc-UFCN, …) plug in as adapters. FastAPI backend + SvelteKit frontend.
+
+#### **oxygraphos-annotator** — PAGE/ALTO annotation UI
+Local-first **annotation** app for scanned pages: regions, baselines, optional polygonize, transcription, LTR/RTL projects, ZIP/RAR import, PAGE-like XML export. FastAPI + SQLAlchemy/SQLite + SvelteKit. Complements ATR by focusing on layout/transcription labeling rather than full job orchestration.
+
+#### **marian 1.3.0** (`marianmt-heb-arc`) — Biblical Hebrew ↔ Aramaic / Syriac MT
+Installable `marian` CLI/library for MarianMT Semitic translation: train, serve, evaluate, checkpoint averaging. Bidirectional **Hebrew ↔ Targumic Aramaic** and **Hebrew ↔ Classical Syriac** models (chained fine-tunes from `opus-mt-sem-sem`). Example held-out scores: heb→arc BLEU **45.1** / chrF **64.3**; arc→heb BLEU **61.1** / chrF **74.2**.
+
 ---
 
 ## 🛠️ **Technical Expertise**
@@ -70,7 +98,8 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 ### **AI/ML Technologies**
 - **Deep Learning**: PyTorch, Transformers (Hugging Face), TensorFlow, Keras
 - **NLP Models**: MarianMT, CANINE, BiLSTM, Attention mechanisms
-- **Computer Vision**: OCR, HTR, image processing with Kraken
+- **Document / layout detectors**: DETR-style set prediction, HybridEncoder, polyline baselines (RegNetX / D-FINE / ConvNeXt)
+- **Computer Vision**: OCR, HTR, image processing with Kraken; PAGE-XML / ALTO export
 - **Model Optimization**: Mixed precision training, gradient checkpointing, early stopping
 
 ### **eGPU & Hardware Optimization**
@@ -78,6 +107,7 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 - **Thunderbolt 3.0** bandwidth management and optimization
 - **Memory-efficient training** strategies for large datasets
 - **GPU-cached datasets** and distributed training
+- **AMD Instinct MI300X** (ROCm) for multiscript Stage-0 pretraining
 
 ### **Semitic Language Processing**
 - **Hebrew**: Biblical, Mishnaic, Modern Hebrew with nikud restoration
@@ -105,6 +135,7 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 ### **Historical Text Digitization**
 - **OCR post-processing** for medieval and historical manuscripts
 - **Handwritten Text Recognition (HTR)** for various scripts
+- **Baseline / polyline detection** for line-level HTR pipelines
 - **Text cleaning** and normalization for ancient languages
 - **Dataset creation** for historical text corpora
 
@@ -118,6 +149,10 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 
 ## 📊 **Recent Achievements & Impact**
 
+- ✅ **Published regnetx-det preprint** on Zenodo ([doi:10.5281/zenodo.22059333](https://doi.org/10.5281/zenodo.22059333)) with HF weights and Gradio demo
+- ✅ **Released Stage-0 + Hebrew/Samaritan polyline checkpoints** for historical baseline detection
+- ✅ **Hardened PAGE/ALTO polygon export** (BLLA-derived carver + baseline containment) across detector siblings
+- ✅ **Building private Oxygraphos ATR / OCR / annotator stack** and Marian Semitic MT toolkit (not public yet)
 - ✅ **Developed comprehensive Hebrew NLP system** with eGPU optimization
 - ✅ **Created bidirectional Hebrew-Aramaic translation models** for biblical studies
 - ✅ **Built lightweight Aramaic diacritizer** using BiLSTM + Attention
@@ -130,6 +165,9 @@ I'm passionate about **Natural Language Processing**, **Semitic linguistics**, a
 ---
 
 ## 🌟 **Featured Projects & Repositories**
+
+### **[regnetx-det](https://github.com/johnlockejrr/regnetx-det)**
+Set-prediction polyline baselines for historical documents (HybridEncoder transfer). Paper: [Zenodo](https://doi.org/10.5281/zenodo.22059333). Weights: [Stage-0](https://huggingface.co/johnlockejrr/regnetx-8gf-polyline-baseline-stage0), [Hebrew/Samaritan](https://huggingface.co/johnlockejrr/regnetx-8gf-polyline-hebrew-samaritan).
 
 ### **[Unikud - Hebrew NLP System](https://github.com/johnlockejrr/unikud)**
 Complete Hebrew text processing pipeline with advanced nikud restoration, eGPU optimization, and large-scale dataset processing.
@@ -149,13 +187,18 @@ Handwritten Text Recognition system using Kraken framework for historical manusc
 ### **[Samaritan Torah Search](https://github.com/johnlockejrr/samaritanus)**
 Modern web interface for searching Samaritan Torah text with React, FastAPI, and Elasticsearch.
 
+### **Private / in progress** *(no public repo links yet)*
+`oxygraphos-ocr` · `oxygraphos-atr` · `oxygraphos-annotator` · `marian` (`marianmt-heb-arc`) — see **Current Projects** above.
+
 ---
 
 ## 🔗 **Connect & Collaborate**
 
 - **GitHub**: [@johnlockejrr](https://github.com/johnlockejrr)
 - **Hugging Face**: [@johnlockejrr](https://huggingface.co/johnlockejrr)
-- **Research Focus**: Semitic NLP, AI Optimization, Historical Text Digitization, eGPU Computing
+- **ORCID**: [0009-0005-0365-6608](https://orcid.org/0009-0005-0365-6608)
+- **Zenodo**: [regnetx-det preprint](https://doi.org/10.5281/zenodo.22059333)
+- **Research Focus**: Semitic NLP, historical document AI (baselines / HTR / OCR), AI optimization, eGPU computing
 
 ---
 
@@ -165,14 +208,18 @@ Modern web interface for searching Samaritan Torah text with React, FastAPI, and
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=johnlockejrr&layout=compact&theme=radical)
 
-![Streaks](https://github-readme-streak-stats.herokuapp.com?user=johnlockejrr&theme=tokyonight&theme=radical)
+![Streaks](https://github-readme-streak-stats.herokuapp.com/?user=johnlockejrr&theme=radical)
 
 ---
 
 ## 🎯 **Current Research Focus**
 
 Currently working on:
-- **Advanced Semitic language model training** with eGPU optimization
+- **Polyline baseline detection** (regnetx-det / dfine-det / convnextv2-det) and PAGE/ALTO export hardening
+- **Multiscript Stage-0 pretraining** and Hebrew/Samaritan domain fine-tuning
+- **Oxygraphos private stack** — `oxygraphos-ocr` (engine workspace), `oxygraphos-atr` (ATR jobs + recognition), `oxygraphos-annotator` (PAGE/ALTO labeling)
+- **MarianMT Semitic MT toolkit** (`marian` / `marianmt-heb-arc`) — Hebrew ↔ Aramaic / Syriac train–serve–eval
+- **Advanced Semitic language model training** with eGPU / accelerator optimization
 - **Large-scale historical text dataset** creation and preprocessing
 - **Cross-lingual Semitic language** processing and translation
 - **Memory-efficient training strategies** for transformer models
@@ -186,6 +233,7 @@ Currently working on:
 I'm always interested in:
 - **Semitic linguistics research** collaborations
 - **Historical text digitization** projects
+- **Baseline detection / HTR** and document layout AI
 - **AI model optimization** for ancient languages
 - **eGPU computing** challenges and optimization
 - **Cross-cultural linguistic** research partnerships
