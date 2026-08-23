@@ -204,11 +204,12 @@ Modern web interface for searching Samaritan Torah text with React, FastAPI, and
 
 ## 📈 **GitHub Statistics**
 
-![John's GitHub stats](https://github-readme-stats.vercel.app/api?username=johnlockejrr&show_icons=true&theme=radical)
+<!-- Official successor of github-readme-stats (public vercel.app instance is DEPLOYMENT_PAUSED). Verified 2026-08-23. -->
+![John's GitHub stats](https://github-stats-extended.vercel.app/api?username=johnlockejrr&show_icons=true&theme=radical)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=johnlockejrr&layout=compact&theme=radical)
+![Top Languages](https://github-stats-extended.vercel.app/api/top-langs/?username=johnlockejrr&layout=compact&theme=radical)
 
-![Streaks](https://github-readme-streak-stats.herokuapp.com/?user=johnlockejrr&theme=radical)
+![Streaks](https://streak-stats.demolab.com/?user=johnlockejrr&theme=radical)
 
 ---
 
