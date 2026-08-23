@@ -209,8 +209,6 @@ Modern web interface for searching Samaritan Torah text with React, FastAPI, and
 
 ![Top Languages](https://github-stats-extended.vercel.app/api/top-langs/?username=johnlockejrr&layout=compact&theme=radical)
 
-![Streaks](https://streak-stats.demolab.com/?user=johnlockejrr&theme=radical)
-
 ---
 
 ## 🎯 **Current Research Focus**
